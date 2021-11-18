@@ -9,22 +9,6 @@ public class PrintRunnable implements Runnable {
         this.time = time;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
-
     @Override
     public void run() {
         for (int i = 0; i < 10; i++) {
