@@ -3,12 +3,14 @@ package java_professional_8.additional;
 public class A implements Runnable {
     String word;
     boolean isSaidA = false;
+    Main main;
 
     public A() {
     }
 
-    public A(String word) {
+    public A(String word, Main main) {
         this.word = word;
+        this.main = main;
     }
 
     public boolean isSaidA() {
@@ -19,26 +21,10 @@ public class A implements Runnable {
         isSaidA = said;
     }
 
-    public synchronized void say(String word) {
-        if (isSaidA) {
-            try {
-                setSaidA(false);
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }else {
-            System.out.println(word);
-            setSaidA(true);
-            notify();
-        }
-
-    }
-
     @Override
     public void run() {
         for (int i = 0; i < 10; i++) {
-            say(word);
+            setSaidA(main.say(word, isSaidA()));
         }
     }
 }
